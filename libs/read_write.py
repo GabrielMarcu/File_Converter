@@ -1,4 +1,5 @@
 """Module used for reading and writing files"""
+import csv
 
 
 def read_csv(path: str) ->list[list]:
@@ -10,9 +11,14 @@ def read_txt(path: str) -> list:
 
 
 def write_csv(path: str) -> None:
-    pass
-
+    text = read_txt(path)
+    with open(path, 'w') as fw:
+        writer = csv.writer(fw)
+        return writer.writerow(text)
 
 def write_txt(path: str) -> None:
-    pass
+    text = read_csv(path)
+    with open(path, 'w') as fw:
+        return fw.writelines(text)
+
 
