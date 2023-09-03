@@ -2,18 +2,19 @@
 import csv
 
 
-def read_csv(path: str) -> list[list]:
+def read_csv(path: str) -> list:
     with open(path, 'r') as fr:
         reader = csv.reader(fr)
-        rows = [row for row in reader]
+        rows = ['\n'.join(row) for row in reader]
     return rows
 
 
-def read_txt(path: str) -> list[list]:
+def read_txt(path: str) -> list:
     with open(path, 'r') as fr:
-        stripped = (line.strip() for line in fr)
-        lines = [line.split(",") for line in stripped if line]
-    return lines
+        stripped = [line.strip() for line in fr]
+        # lines = [line.split() for line in stripped if line]
+
+    return stripped
 
 
 def write_csv(output_path: str, lista: list) -> None:
@@ -33,7 +34,8 @@ def write_txt(output_path: str, lista) -> None:
 
 
 if __name__ == '__main__':
-    # print(read_txt(r"D:\Gabriel\Curs_Python\Team_Project\Read_File\test.txt"))
+    pass
+    print(read_txt(r"D:\Gabriel\Curs_Python\Team_Project\CSV_to_TXT_to_CSV\text.txt"))
     # print(read_csv(r"D:\Gabriel\Curs_Python\Password Manager\userdata.csv"))
     # write_csv(r'D:\Gabriel\Curs_Python\Team_Project\CSV_to_TXT_to_CSV\text.txt', 'test_w_csv.csv')
     # write_txt('test_w_text.txt')
