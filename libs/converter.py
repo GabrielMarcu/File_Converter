@@ -1,7 +1,7 @@
 """Docstring"""
+import os.path
 
-import csv
-import os
+
 
 
 def text_to_csv(input_path, output_path) -> None:
@@ -39,7 +39,14 @@ def csv_to_text(input_path, output_path) -> None:
         text_file.write("\n".join(lines))
 
 
+def convert_to_csv(path: str):
+    file_list = rw.read_txt(path)
+    output_path = os.path.splitext(path)[0]
+    rw.write_csv(f"{output_path}.csv", file_list)
+    print(f'File {output_path} converted to csv')
+
 if __name__ == '__main__':
+
     try:
         input_file = input('input file: ')
         output_file = input('output file: ')
@@ -53,4 +60,5 @@ if __name__ == '__main__':
         csv_to_text(input_csv_file, output_csv_file)
     except ValueError as e:
         print(f'Error -> {e}')
+
 
