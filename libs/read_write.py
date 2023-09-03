@@ -16,14 +16,24 @@ def read_txt(path: str) -> list[list]:
     return lines
 
 
-def write_csv(path: str) -> None:
-    pass
+def write_csv(output_path: str, lista: list) -> None:
+    """Creates a new csv file"""
+    with open(output_path, 'w', newline='') as fw:
+        writer = csv.writer(fw)
+        writer.writerows(lista)
 
 
-def write_txt(path: str) -> None:
-    pass
+def write_txt(output_path: str, lista) -> None:
+    """Creates a new text file"""
+
+    with open(output_path, 'w') as fr:
+        for row in lista:
+            fr.writelines(row)
+
 
 
 if __name__ == '__main__':
-    print(read_txt(r"D:\Gabriel\Curs_Python\Team_Project\Read_File\test.txt"))
-    print(read_csv(r"D:\Gabriel\Curs_Python\Password Manager\userdata.csv"))
+    # print(read_txt(r"D:\Gabriel\Curs_Python\Team_Project\Read_File\test.txt"))
+    # print(read_csv(r"D:\Gabriel\Curs_Python\Password Manager\userdata.csv"))
+    # write_csv(r'D:\Gabriel\Curs_Python\Team_Project\CSV_to_TXT_to_CSV\text.txt', 'test_w_csv.csv')
+    # write_txt('test_w_text.txt')
